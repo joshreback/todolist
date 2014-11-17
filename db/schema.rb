@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112062800) do
+ActiveRecord::Schema.define(version: 20141117071822) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141112062800) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.integer  "phone_number"
+    t.integer  "phone_number", limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
