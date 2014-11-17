@@ -1,9 +1,15 @@
+#= require_self
+#= require_tree ./models
+#= require_tree ./collections
+#= require_tree ./views
+#= require_tree ./routers
+
 window.Todolist =
   Models: {}
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: ->
 
 $(document).ready ->
   Todolist.initialize()
