@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20141118071346) do
     t.integer  "phone_number", limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
   end
 
 end
