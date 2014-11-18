@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117071822) do
+ActiveRecord::Schema.define(version: 20141118071346) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "todos", force: true do |t|
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141117071822) do
     t.integer  "phone_number", limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
 end
