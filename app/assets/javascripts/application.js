@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require underscore
+//= require handlebars.runtime
 //= require backbone
 //= require todolist
-//= require_tree ../templates
+//= require_tree ./templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

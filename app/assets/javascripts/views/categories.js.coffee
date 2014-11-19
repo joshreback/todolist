@@ -8,7 +8,11 @@ Todolist.Views.Categories = Backbone.View.extend
     @collection.fetch()
 
   render: ->
-    console.log 'rendering'
+    # PRACTICE, collection-view
+    @collection.forEach (category)=>
+      categoryView = new Todolist.Views.Category
+        model: category
+      @$el.append(categoryView.render().el)
 
   createNewCategory: ->
     category_name = @$el.find(".category-name")
