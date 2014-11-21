@@ -4,11 +4,10 @@ class CategoriesController < ApplicationController
 
   def index
     ### Extremely temporary ###
-    u = User.find 1
+    @categories = User.find(1).categories
 
     respond_to do |format|
       format.html { render action: 'index' }
-      format.json { render json: u.categories, status: :ok }
     end
   end
 
@@ -20,9 +19,9 @@ class CategoriesController < ApplicationController
 
     if @category.save
       respond_to do |format|
-        format.json {
-          flash[:notice] = "The category #{@category.name} was successfully created."
-          redirect_to root_url
+        format.json { render json: @category, status: :ok 
+          # flash[:notice] = "The category #{@category.name} was successfully created."
+          # redirect_to root_url
         }
       end
     end

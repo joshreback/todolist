@@ -9,6 +9,9 @@
 <body id="<%= params[:controller].parameterize %>" class="<%= params[:action].parameterize %>">
 
   <!-- PRACTICE, looping through the flash hash -->
+  <% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => key %>
+  <% end %>
 
   <%= yield %>
 </body>
