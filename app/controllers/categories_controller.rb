@@ -19,10 +19,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       respond_to do |format|
-        format.json { render json: @category, status: :ok 
-          # flash[:notice] = "The category #{@category.name} was successfully created."
-          # redirect_to root_url
-        }
+        format.json { render json: @category, status: :ok }
       end
     end
   end
