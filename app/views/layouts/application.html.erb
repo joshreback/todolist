@@ -7,9 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= params[:controller].parameterize %>" class="<%= params[:action].parameterize %>">
-
-  <!-- PRACTICE, looping through the flash hash -->
-
   <%= yield %>
 </body>
 </html>

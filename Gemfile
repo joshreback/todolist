@@ -30,6 +30,7 @@ gem 'backbone-on-rails'
 
 gem 'handlebars_assets'
 
+gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
