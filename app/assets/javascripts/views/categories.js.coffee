@@ -7,11 +7,9 @@ Todolist.Views.Categories = Backbone.View.extend
 
     @collection.on('add', @addOne)
     @collection.on('sync', @render)
-    @collection.fetch()  # Make a json fetch
+    @collection.fetch()  # Make a json fetch categories
 
   render: ->
-    @$el.find("#categories-list").html("")
-
     # PRACTICE, collection-view
     @collection.forEach (category)=>
       @addOne(category)
@@ -26,6 +24,5 @@ Todolist.Views.Categories = Backbone.View.extend
     new_category_model = new Todolist.Models.Category
       name: @$el.find(".category-name").val()
 
-    # save model to server
-    new_category_model.save
+    @collection.add(new_category_model)
     
