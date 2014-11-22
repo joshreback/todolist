@@ -1,11 +1,16 @@
 Todolist.Views.Category = Backbone.View.extend
+  className: 'category'
 
   events:
     "click .new-todo": "addTodo"
+    "click .save-todo": "saveTodo" 
 
   render: ->
     @$el.html(HandlebarsTemplates['category/category'](@model.toJSON()))
     @
 
   addTodo: (e)->
-    @$el.append("<input type='text' class='todo' placeholder='Enter your todo here'/>")
+    @$el.find('.todo-list').append(HandlebarsTemplates['category/todo']())
+
+  saveTodo: (e)->
+    @model.saveTodo(@$el.find('.todo').val())
