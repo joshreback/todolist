@@ -7,3 +7,6 @@ Todolist.Models.Category = Backbone.Model.extend
     else 
       @get('todos').push(todo)
 
+  editTodo: (oldName, newName)->
+
+
