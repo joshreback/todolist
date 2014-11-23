@@ -3,22 +3,17 @@ Todolist.Views.Category = Backbone.View.extend
   className: 'category'
 
   events:
-    "click .new-todo": "addTodo"
-
-  initialize: ->
-    @listenTo(Todolist.Views.Todo.prototype, 'saveTodo', @saveTodo)
-    @listenTo(Todolist.Views.Todo.prototype, 'editTodo', @editTodo)
+    "click .new-todo":   "addTodo"
 
   render: ->
     @$el.html(HandlebarsTemplates['category/category'](@model.toJSON()))
     @
 
   addTodo: (e)->
-    @$el.find('.todo-list').append(new Todolist.Views.Todo().el)
+    todo = new Todolist.Views.Todo()
+    @listenTo(todo, 'saveTodo', @saveTodo)
+    @$el.find('.todo-list').append(todo.el)
 
-  saveTodo: (todoName)->
+  saveTodo: (todoName, originalName=null)->
     # Save todo to model [which is kind of playing the role of a collection]
-    @model.saveTodo(todoName)
-    
-
-
+    @model.saveTodo(todoName, originalName) 
