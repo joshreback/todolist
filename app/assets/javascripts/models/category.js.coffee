@@ -12,4 +12,8 @@ Todolist.Models.Category = Backbone.Model.extend
     else 
       @get('todos').push(newTodo)
 
-
+  # Deletes a todo from this category
+  destroyTodo: (todoName) ->
+    todos = @get('todos')
+    todos = todos.filter (todo) -> todo isnt todoName
+    @set({ todos: todos })

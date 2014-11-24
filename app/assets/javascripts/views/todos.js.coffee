@@ -3,8 +3,9 @@ Todolist.Views.Todo = Backbone.View.extend
   className: "todo-container"
 
   events: 
-    "click .save-todo":  "saveTodo"
-    "click .edit-todo":  "editTodo"
+    "click .save-todo":     "saveTodo"
+    "click .edit-todo":     "editTodo"
+    "click .destroy-todo":  "destroyTodo"
 
   initialize: ->
     @originalName = null
@@ -39,3 +40,9 @@ Todolist.Views.Todo = Backbone.View.extend
     @$el.find('.save-todo').removeClass('hidden')
     @$el.find('.edit-todo').addClass('hidden')
     @$el.find('.destroy-todo').addClass('hidden')
+
+  destroyTodo: (e)->
+    debugger;
+    todoName = @$el.find('.todo').val()
+    @$el.remove()
+    @trigger('destroyTodo', todoName)
