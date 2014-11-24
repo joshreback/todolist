@@ -4,16 +4,32 @@ Todolist.Models.Category = Backbone.Model.extend
   # Either create, update, or add a todo to the todolist maintained by the category
   saveTodo: (newTodo, originalName)->
     if !@get('todos')
-      @set({ todos: [newTodo] })
+      # First Todo in the category
+      todos = {}
+      todos[newTodo] = "incomplete"
+      @set({ todos: todos })
     else if originalName
+      # Editing a Todo
       todos = @get('todos')
-      todos[todos.indexOf(originalName)] = newTodo
+      delete todos[originalName]
+      todos[newTodo] = "incomplete"  # Can't rename a completed Todo
       @set({ todos: todos })
     else 
-      @get('todos').push(newTodo)
+      # Adding a new Todo
+      todos = @get('todos')
+      todos[newTodo] = "incomplete"
+      @set({ todos: todos })
 
-  # Deletes a todo from this category
+
+  # Deletes a Todo from this category
   destroyTodo: (todoName) ->
     todos = @get('todos')
-    todos = todos.filter (todo) -> todo isnt todoName
+    delete todos[todoName]
+    @set({ todos: todos }) 
+
+
+  # Mark the Todo as completed
+  completeTodo: (todoName)->
+    todos = @get('todos')
+    todos[todoName] = "complete"
     @set({ todos: todos })

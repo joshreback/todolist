@@ -16,6 +16,7 @@ Todolist.Views.Category = Backbone.View.extend
     # listenTo events bubbling up from associated Todos
     @listenTo(todo, 'saveTodo', @saveTodo)
     @listenTo(todo, 'destroyTodo', @destroyTodo)
+    @listenTo(todo, 'completeTodo', @completeTodo)
 
     # Add this Todo to the DOM
     @$el.find('.todo-list').append(todo.el)
@@ -26,3 +27,6 @@ Todolist.Views.Category = Backbone.View.extend
 
   destroyTodo: (todoName)->
     @model.destroyTodo(todoName)
+
+  completeTodo: (todoName)->
+    @model.completeTodo(todoName)
