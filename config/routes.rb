@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   #   resources :products
 
 
-  resources :users, only: [:show, :new, :create, :edit, :udpate]
+  get 'sign_up', to: 'users#new', as: 'signup'
+  get 'sign_in', to: 'sessions#new', as: 'signin'
+  resources :users
+  resources :sessions
   resources :categories, except: [:new, :edit]
   root 'categories#index'
 
