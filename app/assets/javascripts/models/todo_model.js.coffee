@@ -1,0 +1,1 @@
+Todolist.Models.Todo = Backbone.Model.extend
