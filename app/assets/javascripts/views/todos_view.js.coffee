@@ -25,8 +25,9 @@ Todolist.Views.Todos = Backbone.View.extend
 
   addTodo: (e)->
     # Instantiate Todo
+    todoModel = new Todolist.Models.Todo
     todo = new Todolist.Views.Todo
-      model: Todolist.Models.Todo
+      model: todoModel
 
     # listenTo events bubbling up from associated Todos
     @listenTo(todo, 'saveTodo', @saveTodo)
@@ -37,10 +38,10 @@ Todolist.Views.Todos = Backbone.View.extend
     @$el.append(todo.el)
 
   saveTodo: (todoModel)->
-    @model.saveTodo(todoName, originalName) 
+    @collection.saveTodo(todoModel) 
 
   destroyTodo: (todoModel)->
-    @model.destroyTodo(todoName)
+    @collection.destroyTodo(todoModel)
 
   completeTodo: (todoModel)->
-    @model.completeTodo(todoName)
+    @collection.completeTodo(todoModel)

@@ -18,6 +18,7 @@ Todolist.Views.Todo = Backbone.View.extend
 
 
   saveTodo: (e)->
+    debugger;
     # Disable the input text field
     @$el.find('.todo')[0].disabled = true
 
@@ -64,11 +65,8 @@ Todolist.Views.Todo = Backbone.View.extend
     @$el.find('.complete-todo').addClass('hidden')
 
     # Update status of this model
-    @set
+    @model.set
       status: "complete"
-
-    # Trigger the completeTodo event
-    @trigger('completeTodo', @model)
 
 
   changeButtons: ->

@@ -4,7 +4,7 @@
 
 $ ->
   if $("body#categories.index")
-    categoriesCollection = new Todolist.Collections.Categories
+    categoriesCollection = new Todolist.Collections.Categories()
     categoriesView = new Todolist.Views.Categories
       el:         $(".container")
       collection: categoriesCollection

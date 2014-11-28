@@ -5,8 +5,9 @@ Todolist.Views.Category = Backbone.View.extend
   render: ->
     @$el.html(HandlebarsTemplates['category/category'](@model.toJSON()))
   
+
     todoCollectionView = new Todolist.Views.Todos
-      collection: new Todolist.Collections.Todos()
+      collection: new Todolist.Collections.Todos
 
     @$el.append(todoCollectionView.el)
     @
