@@ -10,7 +10,7 @@ Todolist.Views.Todos = Backbone.View.extend
 
   render: ->
     # PRACTICE, collection-view
-    @$el.html(HandleBarsTemplates['category/todos'])()
+    @$el.html(HandlebarsTemplates['category/todos']())
     @collection.forEach (todo)=>
       @addOne(category)
 
@@ -36,11 +36,11 @@ Todolist.Views.Todos = Backbone.View.extend
     # Add this Todo to the DOM
     @$el.append(todo.el)
 
-  saveTodo: (todoName, originalName=null)->
+  saveTodo: (todoModel)->
     @model.saveTodo(todoName, originalName) 
 
-  destroyTodo: (todoName)->
+  destroyTodo: (todoModel)->
     @model.destroyTodo(todoName)
 
-  completeTodo: (todoName)->
+  completeTodo: (todoModel)->
     @model.completeTodo(todoName)
