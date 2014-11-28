@@ -24,8 +24,13 @@
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions">Sign up!</div>
+
+  <div>
+    <p> Already have an account? </p>
+    <%= link_to "Sign In", login_path %>
+  </div>
 <% end %>

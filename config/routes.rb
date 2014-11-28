@@ -16,11 +16,12 @@ Rails.application.routes.draw do
 
 
   get 'sign_up', to: 'users#new', as: 'signup'
-  get 'sign_in', to: 'sessions#new', as: 'signin'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :users
   resources :sessions
   resources :categories, except: [:new, :edit]
-  root 'categories#index'
+  root 'users#new'
 
   # Example resource route with options:
   #   resources :products do
