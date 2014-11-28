@@ -24,9 +24,13 @@ Todolist.Views.Todo = Backbone.View.extend
     @changeButtons()
 
     # Capture name of todo, trigger saveTodo event which bubbles up
-    # and is handled by the Category model
+    # and is handled by the Todos collection
     todoName = @$el.find('.todo').val()
-    @trigger('saveTodo', todoName, @originalName)
+    @model.set
+      name:   todoName
+      status: "incomplete"
+
+    @trigger('saveTodo', @model)
 
 
   editTodo: (e)->
@@ -47,24 +51,24 @@ Todolist.Views.Todo = Backbone.View.extend
     @$el.remove()
 
     # trigger the destroyTodo event
-    @trigger('destroyTodo', todoName)
+    @trigger('destroyTodo', @model)
 
 
   completeTodo: (e) ->
-    # Capture value of completed Todo
-    todoName = @$el.find('.todo').val()
-
     # Apply "completed" style
     @$el.find('.todo').addClass('completed')
 
     # Hide all buttons (no more editing)
-    @$el.find('.save-todo').addClass('hidden')
     @$el.find('.edit-todo').addClass('hidden')
     @$el.find('.destroy-todo').addClass('hidden')
     @$el.find('.complete-todo').addClass('hidden')
 
+    # Update status of this model
+    @set
+      status: "complete"
+
     # Trigger the completeTodo event
-    @trigger('completeTodo', todoName)
+    @trigger('completeTodo', @model)
 
 
   changeButtons: ->
