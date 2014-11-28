@@ -15,9 +15,13 @@ Rails.application.routes.draw do
   #   resources :products
 
 
-  resources :users, only: [:show, :new, :create, :edit, :udpate]
+  get 'sign_up', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :users
+  resources :sessions
   resources :categories, except: [:new, :edit]
-  root 'categories#index'
+  root 'users#new'
 
   # Example resource route with options:
   #   resources :products do

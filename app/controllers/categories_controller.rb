@@ -3,8 +3,7 @@ class CategoriesController < ApplicationController
   wrap_parameters format: [:json]
 
   def index
-    ### Extremely temporary ###
-    @categories = User.find(1).categories
+    @categories = current_user.categories
 
     respond_to do |format|
       format.html { render action: 'index' }
@@ -14,8 +13,7 @@ class CategoriesController < ApplicationController
   def create
     params = categories_params
 
-    ### Extremely temporary ###
-    @category = Category.new(name: params[:name], user_id: 1)
+    @category = Category.new(name: params[:name], user_id: current_user.id)
 
     if @category.save
       respond_to do |format|
