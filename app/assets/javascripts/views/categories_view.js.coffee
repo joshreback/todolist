@@ -4,9 +4,8 @@ Todolist.Views.Categories = Backbone.View.extend
 
   initialize: ->
     _.bindAll @, 'render', 'addOne'
-
     @collection.on('add', @addOne)
-    @collection.on('sync', @render)
+    @render()
 
   render: ->
     # PRACTICE, collection-view
@@ -24,4 +23,6 @@ Todolist.Views.Categories = Backbone.View.extend
       name: @$el.find(".category-name").val()
 
     @collection.add(new_category_model)
+
+    new_category_model.save()
     

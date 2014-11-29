@@ -18,7 +18,6 @@ Todolist.Views.Todo = Backbone.View.extend
 
 
   saveTodo: (e)->
-    debugger;
     # Disable the input text field
     @$el.find('.todo')[0].disabled = true
 
