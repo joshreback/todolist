@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   wrap_parameters format: [:json]
 
+  #
   def index
     @categories = current_user.categories
 
@@ -22,13 +23,13 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def update
-  end
-
-  def delete
+  # Public: Destroys a category from the database
+  def destroy
+    @category = Category.find_by_id params[:id]
+    @category.destroy()
+    respond_to do |format|
+      format.json { render json: nil, status: :ok }
+    end
   end
 
   private 

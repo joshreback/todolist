@@ -1,6 +1,7 @@
 Todolist.Views.Categories = Backbone.View.extend
   
-  events: "click .new-category": "createNewCategory"
+  events: 
+    "click .new-category": "createNewCategory"
 
   initialize: ->
     _.bindAll @, 'render', 'addOne'
