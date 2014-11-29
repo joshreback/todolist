@@ -7,7 +7,6 @@ Todolist.Views.Categories = Backbone.View.extend
 
     @collection.on('add', @addOne)
     @collection.on('sync', @render)
-    @collection.fetch()  # Make a json fetch categories
 
   render: ->
     # PRACTICE, collection-view
