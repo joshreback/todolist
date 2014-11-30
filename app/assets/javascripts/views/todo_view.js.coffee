@@ -9,50 +9,40 @@ Todolist.Views.Todo = Backbone.View.extend
     "click .complete-todo": "completeTodo"
 
   initialize: ->
-    @originalName = null
     @render()
 
   render: ->
     @$el.html(HandlebarsTemplates['category/todo']())
     @
 
-
   saveTodo: (e)->
-    # Disable the input text field
+    # Disable the input text field and change buttons
     @$el.find('.todo')[0].disabled = true
-
     @changeButtons()
 
-    # Capture name of todo, trigger saveTodo event which bubbles up
-    # and is handled by the Todos collection
+    # Capture name of todo, trigger saveTodo event which bubbles up and is
+    # handled by the Todos collection, and save todo model to server
     todoName = @$el.find('.todo').val()
     @model.set
       name:   todoName
       status: "incomplete"
 
+    debugger;
+    @model.save()
     @trigger('saveTodo', @model)
 
-
   editTodo: (e)->
-    # Capture old value of todo
-    @originalName = @$el.find('.todo').val()
-
     # Reenable input field
     @$el.find('.todo')[0].disabled = false
 
     @changeButtons()
 
-
   destroyTodo: (e)->
-    # Capture value of todo
-    todoName = @$el.find('.todo').val()
-
     # Remove from the DOM
     @$el.remove()
 
     # trigger the destroyTodo event
     @trigger('destroyTodo', @model)
-
 
   completeTodo: (e) ->
     # Apply "completed" style
@@ -66,7 +56,6 @@ Todolist.Views.Todo = Backbone.View.extend
     # Update status of this model
     @model.set
       status: "complete"
-
 
   changeButtons: ->
     @$el.find('.save-todo').toggleClass('hidden')

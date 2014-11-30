@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :users
   resources :sessions
-  resources :categories, except: [:new, :edit]
+  resources :categories do
+    resources :todos
+  end
   root 'users#new'
 
   # Example resource route with options:

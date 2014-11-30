@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   wrap_parameters format: [:json]
 
-  #
+  # Public: Lists all categories & associated todos of the current user
   def index
     @categories = current_user.categories
 
