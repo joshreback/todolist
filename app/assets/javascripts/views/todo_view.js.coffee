@@ -27,7 +27,6 @@ Todolist.Views.Todo = Backbone.View.extend
       name:   todoName
       status: "incomplete"
 
-    debugger;
     @model.save()
     @trigger('saveTodo', @model)
 
