@@ -12,6 +12,19 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    binding.pry
+    params = todos_params
+
+    category_todos = Category.find params[:category_id]
+    todo = category_todos.find_by_name params[:name]
+
+    todo.destroy()
+    respond_to do |format|
+      format.json { render json: nil, status: :ok }
+    end
+  end
+
   private 
 
   def todos_params

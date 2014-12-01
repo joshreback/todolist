@@ -39,8 +39,8 @@ Todolist.Views.Todo = Backbone.View.extend
   destroyTodo: (e)->
     # Remove from the DOM
     @$el.remove()
-
-    # trigger the destroyTodo event
+    debugger;
+    @model.destroy()
     @trigger('destroyTodo', @model)
 
   completeTodo: (e) ->
