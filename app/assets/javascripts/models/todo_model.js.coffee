@@ -1,4 +1,5 @@
 Todolist.Models.Todo = Backbone.Model.extend
   
-  initialize: ->
-    @url = '/categories/' + @collection.category_id + '/todos'
+  initialize: (category_id=null)->
+    cid = category_id || @collection.category_id
+    @url = '/categories/' + cid + '/todos'

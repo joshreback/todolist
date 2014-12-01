@@ -15,8 +15,6 @@ Todolist.Views.Todos = Backbone.View.extend
       @addOne(todo)
 
   addOne: (model) ->
-    model.set
-      category_id: @collection.category_id
     todoView = new Todolist.Views.Todo
       model: model
     @$el.append(todoView.el)
@@ -27,9 +25,7 @@ Todolist.Views.Todos = Backbone.View.extend
 
   addTodo: (e)->
     # Instantiate Todo
-    todoModel = new Todolist.Models.Todo()
-    todoModel.set
-      category_id: @collection.category_id
+    todoModel = new Todolist.Models.Todo(@collection.category_id)
     todo = new Todolist.Views.Todo
       model: todoModel
 
