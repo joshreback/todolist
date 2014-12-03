@@ -39,7 +39,9 @@ Todolist.Views.Todo = Backbone.View.extend
   destroyTodo: (e)->
     # Remove from the DOM
     @$el.remove()
-    debugger;
+    # TODOJ: there must be a better pattern for deleting backbone models 
+    #        such that you don't need to manually append the id to the URL
+    @model.url += '/' + @model.id
     @model.destroy()
     @trigger('destroyTodo', @model)
 

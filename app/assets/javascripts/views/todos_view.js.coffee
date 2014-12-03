@@ -25,6 +25,7 @@ Todolist.Views.Todos = Backbone.View.extend
 
   addTodo: (e)->
     # Instantiate Todo
+    debugger;
     todoModel = new Todolist.Models.Todo(@collection.category_id)
     todo = new Todolist.Views.Todo
       model: todoModel

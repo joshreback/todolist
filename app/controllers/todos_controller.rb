@@ -3,23 +3,20 @@ class TodosController < ApplicationController
   def create
     params = todos_params
 
-    @todo = Todo.new todos_params
+    todo = Todo.new todos_params
 
-    if @todo.save
+    if todo.save
       respond_to do |format|
-        format.json { render json: nil, status: :ok }
+        format.json { render json: todo, status: :ok }
       end
     end
   end
 
   def destroy
-    binding.pry
-    params = todos_params
-
-    category_todos = Category.find params[:category_id]
-    todo = category_todos.find_by_name params[:name]
+    todo = Todo.find params[:id]
 
     todo.destroy()
+    
     respond_to do |format|
       format.json { render json: nil, status: :ok }
     end
