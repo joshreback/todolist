@@ -3,7 +3,8 @@ Todolist.Views.Todos = Backbone.View.extend
   className: 'category-todo-list'
 
   events:
-    "click .new-todo":   "addTodo"
+    "click .new-todo":          "addTodo"
+    "click .yesterdays-todos":  "fetchYesterdays"
 
   initialize: ->
     _.bindAll @, "render"
@@ -39,6 +40,12 @@ Todolist.Views.Todos = Backbone.View.extend
 
     # Add this Todo to the DOM
     @$el.append(todo.el)
+
+  fetchYesterdays: (e)->
+    @collection.fetch
+      data: 
+        $.param(yesterday: true)
+    
 
   saveTodo: (todoModel)->
     @collection.saveTodo(todoModel) 

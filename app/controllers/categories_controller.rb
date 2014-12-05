@@ -35,8 +35,13 @@ class CategoriesController < ApplicationController
 
   # Public: Returns the todos associated with this particular category.
   def todos
+    binding.pry
     category = Category.find params[:category_id]
-    todos = category.todays_todos
+    if params[:yesterday]
+      todos = category.yesterdays_todos
+    else 
+      todos = category.todays_todos
+    end
     
     respond_to do |format|
       format.json { render json: todos, status: :ok }

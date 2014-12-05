@@ -14,6 +14,8 @@ Todolist.Views.Todo = Backbone.View.extend
     @render()
 
   render: ->
+    # Decide how to render the TODO based on whether it's completed,
+    # incomplete, or new
     if @model.get('completed') == true
       @$el.html(HandlebarsTemplates['category/completed_todo']({
           name: @model.get('name')
