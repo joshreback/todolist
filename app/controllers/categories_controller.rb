@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   wrap_parameters format: [:json]
 
+  # Public: Lists all categories & associated todos of the current user
   def index
     @categories = current_user.categories
 
@@ -10,6 +11,7 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # Public: Creates a new category for the current_user
   def create
     params = categories_params
 
@@ -22,18 +24,33 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
+  # Public: Destroys a category from the database
+  def destroy
+    @category = Category.find params[:id]
+    @category.destroy()
+    respond_to do |format|
+      format.json { render json: nil, status: :ok }
+    end
   end
 
-  def update
-  end
-
-  def delete
+  # Public: Returns the todos associated with this particular category.
+  def todos
+    binding.pry
+    category = Category.find params[:category_id]
+    if params[:yesterday]
+      todos = category.yesterdays_todos
+    else 
+      todos = category.todays_todos
+    end
+    
+    respond_to do |format|
+      format.json { render json: todos, status: :ok }
+    end
   end
 
   private 
 
   def categories_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :id)
   end
 end

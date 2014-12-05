@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.new(new_user_params)
     if @user.save
       redirect_to categories_path, notice: "Signed Up!"
