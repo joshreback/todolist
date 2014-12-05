@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201074758) do
+ActiveRecord::Schema.define(version: 20141205041856) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20141201074758) do
   create_table "todos", force: true do |t|
     t.string   "name"
     t.boolean  "completed"
-    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"

@@ -27,12 +27,15 @@ Todolist.Views.Todo = Backbone.View.extend
       name:   todoName
       status: "incomplete"
 
+    @model.updateUrl() if @model.get('edited')
     @model.save()
     @trigger('saveTodo', @model)
 
   editTodo: (e)->
     # Reenable input field
     @$el.find('.todo')[0].disabled = false
+    @model.set
+      edited: true
 
     @changeButtons()
 
@@ -41,7 +44,7 @@ Todolist.Views.Todo = Backbone.View.extend
     @$el.remove()
     # TODOJ: there must be a better pattern for deleting backbone models 
     #        such that you don't need to manually append the id to the URL
-    @model.url += '/' + @model.id
+    @model.updateUrl()
     @model.destroy()
     @trigger('destroyTodo', @model)
 
@@ -56,12 +59,15 @@ Todolist.Views.Todo = Backbone.View.extend
 
     # Update status of this model
     @model.set
-      status: "complete"
+      complete: 1
+    @model.updateUrl()
+    @model.save()
 
   changeButtons: ->
     @$el.find('.save-todo').toggleClass('hidden')
     @$el.find('.edit-todo').toggleClass('hidden')
     @$el.find('.destroy-todo').toggleClass('hidden')
     @$el.find('.complete-todo').toggleClass('hidden')
+
 
 

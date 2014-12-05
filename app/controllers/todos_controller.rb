@@ -12,6 +12,18 @@ class TodosController < ApplicationController
     end
   end
 
+  def update
+    binding.pry 
+    params = todos_params
+    
+    todo = Todo.find params[:id]
+    todo.update params
+
+    respond_to do |format|
+      format.json { render json: todo, status: :ok }
+    end
+  end
+
   def destroy
     todo = Todo.find params[:id]
 
@@ -25,6 +37,6 @@ class TodosController < ApplicationController
   private 
 
   def todos_params
-    params.require(:todo).permit(:name, :status, :category_id)
+    params.require(:todo).permit(:id, :name, :category_id, :completed)
   end
 end
