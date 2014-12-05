@@ -9,25 +9,41 @@ Todolist.Views.Todo = Backbone.View.extend
     "click .complete-todo": "completeTodo"
 
   initialize: ->
+    _.bindAll @, 'render'
+    @model.on('change', @render)
     @render()
 
   render: ->
-    @$el.html(HandlebarsTemplates['category/todo']())
+    if @model.get('completed') == true
+      @$el.html(HandlebarsTemplates['category/completed_todo']({
+          name: @model.get('name')
+        })
+      )
+    else if @model.get('name') && !@model.get('editMode')
+      @$el.html(HandlebarsTemplates['category/todo']({
+          name: @model.get('name')
+        })
+      )
+    else
+      @$el.html(HandlebarsTemplates['category/new_todo']({
+          name: @model.get('name')
+        })
+      )
     @
 
   saveTodo: (e)->
     # Disable the input text field and change buttons
     @$el.find('.todo')[0].disabled = true
-    @changeButtons()
 
     # Capture name of todo, trigger saveTodo event which bubbles up and is
     # handled by the Todos collection, and save todo model to server
     todoName = @$el.find('.todo').val()
+
+    @model.updateUrl() if @model.get('editMode')
     @model.set
       name:   todoName
       status: "incomplete"
-
-    @model.updateUrl() if @model.get('edited')
+      editMode: false
     @model.save()
     @trigger('saveTodo', @model)
 
@@ -35,9 +51,8 @@ Todolist.Views.Todo = Backbone.View.extend
     # Reenable input field
     @$el.find('.todo')[0].disabled = false
     @model.set
-      edited: true
-
-    @changeButtons()
+      editMode: true
+    @model.updateUrl()
 
   destroyTodo: (e)->
     # Remove from the DOM
@@ -49,25 +64,13 @@ Todolist.Views.Todo = Backbone.View.extend
     @trigger('destroyTodo', @model)
 
   completeTodo: (e) ->
-    # Apply "completed" style
-    @$el.find('.todo').addClass('completed')
-
-    # Hide all buttons (no more editing)
-    @$el.find('.edit-todo').addClass('hidden')
-    @$el.find('.destroy-todo').addClass('hidden')
-    @$el.find('.complete-todo').addClass('hidden')
-
     # Update status of this model
     @model.set
-      complete: 1
+      completed: 1
     @model.updateUrl()
+    debugger;
     @model.save()
 
-  changeButtons: ->
-    @$el.find('.save-todo').toggleClass('hidden')
-    @$el.find('.edit-todo').toggleClass('hidden')
-    @$el.find('.destroy-todo').toggleClass('hidden')
-    @$el.find('.complete-todo').toggleClass('hidden')
 
 
 

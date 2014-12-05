@@ -6,12 +6,15 @@ Todolist.Views.Todos = Backbone.View.extend
     "click .new-todo":   "addTodo"
 
   initialize: ->
-    @render()
+    _.bindAll @, "render"
+    @collection.on('sync', @render)
+    @collection.fetch()
 
   render: ->
     # PRACTICE, collection-view
     @$el.html(HandlebarsTemplates['category/todos']())
     @collection.forEach (todo)=>
+      todo.setUrl(@collection.category_id)
       @addOne(todo)
 
   addOne: (model) ->

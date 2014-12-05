@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :categories do
+    get 'todos' => 'categories#todos'
     resources :todos
   end
   root 'users#new'

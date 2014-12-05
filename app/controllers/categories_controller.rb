@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # Public: Creates a new category for the current_user
   def create
     params = categories_params
 
@@ -25,16 +26,26 @@ class CategoriesController < ApplicationController
 
   # Public: Destroys a category from the database
   def destroy
-    @category = Category.find_by_id params[:id]
+    @category = Category.find params[:id]
     @category.destroy()
     respond_to do |format|
       format.json { render json: nil, status: :ok }
     end
   end
 
+  # Public: Returns the todos associated with this particular category.
+  def todos
+    category = Category.find params[:category_id]
+    todos = category.todays_todos
+    
+    respond_to do |format|
+      format.json { render json: todos, status: :ok }
+    end
+  end
+
   private 
 
   def categories_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :id)
   end
 end
