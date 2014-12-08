@@ -35,7 +35,6 @@ class CategoriesController < ApplicationController
 
   # Public: Returns the todos associated with this particular category.
   def todos
-    binding.pry
     category = Category.find params[:category_id]
     if params[:yesterday]
       todos = category.yesterdays_todos

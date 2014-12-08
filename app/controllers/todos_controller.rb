@@ -13,7 +13,6 @@ class TodosController < ApplicationController
   end
 
   def update
-    binding.pry
     params = todos_params
     
     todo = Todo.find params[:id]
