@@ -1,7 +1,5 @@
 Todolist.Views.Category = Backbone.View.extend
   
-  className: 'category-container'
-
   events:
     "click .delete-category": "deleteCategory"
 
@@ -14,7 +12,7 @@ Todolist.Views.Category = Backbone.View.extend
     todoCollectionView = new Todolist.Views.Todos
       collection: todoCollection
 
-    @$el.append(todoCollectionView.el)
+    @$el.find('.todo-list-container').append(todoCollectionView.el)
     @
 
   deleteCategory: (e)->

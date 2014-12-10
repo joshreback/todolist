@@ -1,6 +1,7 @@
 Todolist.Views.Todos = Backbone.View.extend
 
-  className: 'category-todo-list'
+  className:
+    "todos-container"
 
   events:
     "click .new-todo":          "addTodo"
@@ -21,7 +22,7 @@ Todolist.Views.Todos = Backbone.View.extend
   addOne: (model) ->
     todoView = new Todolist.Views.Todo
       model: model
-    @$el.append(todoView.el)
+    @$el.find('.todo-list').append(todoView.el)
 
 ############################
 ###### Event Handlers ######

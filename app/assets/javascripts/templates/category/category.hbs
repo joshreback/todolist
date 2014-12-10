@@ -1,9 +1,18 @@
 <div class="col-md-4">
-  <div class="todo-list">
-    <p>
-      <strong>{{name}}</strong>
-    </p>
-    <button type="button" class="delete-category">Delete</button>
+  <div class="category-container">
+
+    <span class="category-name"> <strong>{{name}}</strong></span>
+  
+    <button type="button" class="delete-category pull-right btn btn-danger btn-xs">
+      <i class="glyphicon glyphicon-remove"></i>
+    </button>
+
+    <hr />
+  
+    <!-- The Todolist container will go here -->
+    <div class="todo-list-container">
+
+    </div>
   </div>
 </div>
 
