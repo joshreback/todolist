@@ -40,7 +40,7 @@ Todolist.Views.Todos = Backbone.View.extend
     @listenTo(todo, 'completeTodo', @completeTodo)
 
     # Add this Todo to the DOM
-    @$el.append(todo.el)
+    @$el.find('.todo-list').append(todo.el)
 
   fetchYesterdays: (e)->
     @collection.fetch

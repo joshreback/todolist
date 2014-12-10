@@ -1,3 +1,25 @@
 // Place all the styles related to the Todos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.todos-container {
+  .todo-filters { 
+    margin: 10px 10px 10px 10px;
+    .yesterdays-todos { 
+      font-size: 12px;
+    }
+  }
+  .todo-container {
+    margin-left: 10px;
+    input.todo {
+      width: 240px;
+      font: 11.5px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .completed-todo-container {
+      margin-left: 31px;
+    }
+    .new-todo-container {
+      margin-left: 31px;
+    }
+  }
+}
