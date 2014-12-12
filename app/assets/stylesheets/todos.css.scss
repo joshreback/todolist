@@ -10,16 +10,15 @@
     }
   }
   .todo-container {
-    margin-left: 10px;
     input.todo {
       width: 240px;
       font: 11.5px "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    .completed-todo-container {
-      margin-left: 31px;
+    .completed-todo-container, .new-todo-container {
+      margin-left: 41px;
     }
-    .new-todo-container {
-      margin-left: 31px;
+    .saved-todo-container {
+      margin-left: 10px;
     }
   }
 }
