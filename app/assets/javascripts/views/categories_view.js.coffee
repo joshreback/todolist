@@ -18,7 +18,9 @@ Todolist.Views.Categories = Backbone.View.extend
       model: model
     @$el.find("#categories-list").append(categoryView.render().el)
 
-  createNewCategory: ->
+  createNewCategory: (e) ->
+    e.stopPropagation()
+
     # Create new model
     new_category_model = new Todolist.Models.Category
       name: @$el.find(".category-name").val()

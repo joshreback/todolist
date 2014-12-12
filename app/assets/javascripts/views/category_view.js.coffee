@@ -1,5 +1,7 @@
 Todolist.Views.Category = Backbone.View.extend
   
+  className: "col-md-4"
+    
   events:
     "click .delete-category": "deleteCategory"
 
