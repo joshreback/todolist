@@ -3,5 +3,5 @@
 </div>
 <div class="todo-filters">
   <button type="button" class="new-todo btn btn-primary btn-sm">Add a Todo</button>
-  <a href="#" class="yesterdays-todos">Use Yesterdays</a>
+  {{#unless notUsingYesterdays}} <a href="#" class="yesterdays-todos">Use Yesterdays</a>{{/unless }}
 </div> 

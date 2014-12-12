@@ -14,7 +14,7 @@ Todolist.Views.Todos = Backbone.View.extend
 
   render: ->
     # PRACTICE, collection-view
-    @$el.html(HandlebarsTemplates['category/todos']())
+    @$el.html(HandlebarsTemplates['category/todos']({notUsingYesterdays: @collection.fetchedYesterdays}))
     @collection.forEach (todo)=>
       todo.setUrl(@collection.category_id)
       @addOne(todo)
@@ -43,7 +43,11 @@ Todolist.Views.Todos = Backbone.View.extend
     @$el.find('.todo-list').append(todo.el)
 
   fetchYesterdays: (e)->
+    e.preventDefault()
+
+    @collection.fetchedYesterdays = true
     @collection.fetch
+      remove: false
       data: 
         $.param(yesterday: true)
     
