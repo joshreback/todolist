@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'todos' => 'categories#todos'
     resources :todos
   end
+  resources :todos, only: [:index]
   root 'users#new'
 
   # Example resource route with options:

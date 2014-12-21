@@ -1,5 +1,14 @@
 class TodosController < ApplicationController
 
+  # Probably not the best place for this, come to think of it
+  def index
+    @snapshot_of_day = Todo.snapshot 1418423872516 # params[:day]
+
+    respond_to do |format|
+      format.json { render :index}
+    end
+  end
+
   def create
     params = todos_params
 
