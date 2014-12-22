@@ -1,0 +1,8 @@
+<h1> Calendar Page </h1>
+
+<div id="calendar">
+  <!-- Each individual day (not the headers) is passed as a parameter to this block -->
+  <%= calendar @date do |date| %> 
+    <%= date.day %>
+  <% end %>
+</div>

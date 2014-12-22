@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :todos
   end
   resources :todos, only: [:index]
+  resources :days, as: 'calendar'
   root 'users#new'
 
   # Example resource route with options:
