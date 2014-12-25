@@ -17,7 +17,7 @@ module DayHelper
     # Top-level function to make a table tag with class "calendar"
     # Puts the header (i.e, the days) in the top row and then the
     # rows for the week after work
-    def table
+    def table 
       content_tag :table, class: "calendar" do
         (header + week_rows)
       end
@@ -41,7 +41,7 @@ module DayHelper
         content_tag :tr do
           week.map { |day| day_cell(day) }.join.html_safe
         end
-      end
+      end.join.html_safe
     end
 
     # Turns a day, i.e, a number representing that day in the month, into a table
