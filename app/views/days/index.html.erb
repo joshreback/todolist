@@ -2,7 +2,8 @@
 
 <div id="calendar">
   <!-- Each individual day (not the headers) is passed as a parameter to this block -->
-  <%= calendar do |date| %> 
+  <%= calendar do |date| %>
+    <!-- The block is executed from within the day_cell function; the whole view is rendered from the outer calendar function -->
     <%= date.day %>
   <% end %>
 </div>
