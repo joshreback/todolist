@@ -1,9 +1,11 @@
-<h1> Calendar Page </h1>
+<h2 id="month">
+  <%= link_to "<", date: @date.prev_month %>
+  <%= @date.strftime("%B %Y") %>
+  <%= link_to ">", date: @date.next_month %>
+</h2>
 
 <div id="calendar">
-  <!-- Each individual day (not the headers) is passed as a parameter to this block -->
-  <%= calendar do |date| %>
-    <!-- The block is executed from within the day_cell function; the whole view is rendered from the outer calendar function -->
+  <%= calendar @date do |date| %>
     <%= date.day %>
   <% end %>
 </div>

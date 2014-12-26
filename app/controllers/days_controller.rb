@@ -1,6 +1,6 @@
 class DaysController < ApplicationController
 
   def index
-    @date = Date.today
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 end
