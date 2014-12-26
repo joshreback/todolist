@@ -47,6 +47,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def calendar
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+  
   private 
 
   def categories_params

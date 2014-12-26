@@ -1,4 +1,4 @@
-module DayHelper
+module CalendarHelper
   def calendar(date=Date.today, &block)
     # Instantiate the Calendar Struct, defined below
     # And call its table method

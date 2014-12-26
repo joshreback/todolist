@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     get 'todos' => 'categories#todos'
     resources :todos
   end
+  get 'calendar', to: 'categories#calendar', as: 'calendar'
   resources :todos, only: [:index]
-  resources :days, as: 'calendar'
   root 'users#new'
 
   # Example resource route with options:
