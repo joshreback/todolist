@@ -48,10 +48,15 @@ Todolist.Views.Todos = Backbone.View.extend
     e.preventDefault()
 
     @collection.fetchedYesterdays = true
+
+    yesterdayTimeStamp = new Date() - 1000 * 60 * 60 * 24
+
     @collection.fetch
       remove: false
       data: 
-        $.param(yesterday: true)
+        $.param
+          create_new_todos: true
+          day_timestamp: yesterdayTimeStamp
     
 
   saveTodo: (todoModel)->

@@ -8,11 +8,12 @@ class Category < ActiveRecord::Base
 
     query = todos.where(
       'updated_at > :earlier_bound AND updated_at <= :later_bound', { 
-        earlier_bound: DateTime.yesterday.beginning_of_day, 
-        later_bound: DateTime.now.beginning_of_day
+        earlier_bound: desired_day, 
+        later_bound: next_day
       })
-
+    
     query = query.where(completed: false) if opts[:incomplete_only]
+    query
   end
 
   def mark_as_inactive
