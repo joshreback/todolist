@@ -33,14 +33,14 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # Public: Returns the todos associated with this particular category.
+  # Public: Returns the todos associated with a particular category.
   def todos
     category = Category.find params[:category_id]
-    if params[:yesterday]
-      todos = category.yesterdays_todos
-    else 
-      todos = category.todays_todos
-    end
+    opts = {}
+    opts[:timestamp]        = params[:timestamp]
+    opts[:incomplete_only]  = params[:incomplete_only] if params[:incomplete_only]
+
+    todos = category.todos_by_day opts
     
     respond_to do |format|
       format.json { render json: todos, status: :ok }
