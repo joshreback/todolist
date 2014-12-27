@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   # Public: Lists all categories & associated todos of the current user
   def index
-    @categories = current_user.categories
+    @categories = current_user.active_categories
 
     respond_to do |format|
       format.html { render action: 'index' }
@@ -24,10 +24,10 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # Public: Destroys a category from the database
-  def destroy
+  # Public: Updates a category (for now, by marking as inactive)
+  def update
     @category = Category.find params[:id]
-    @category.destroy()
+    @category.mark_as_inactive if !params[:active]
     respond_to do |format|
       format.json { render json: nil, status: :ok }
     end

@@ -3,7 +3,7 @@ Todolist.Views.Category = Backbone.View.extend
   className: "col-md-4"
     
   events:
-    "click .delete-category": "deleteCategory"
+    "click .delete-category": "markAsInactive"
 
   render: ->
     @$el.html(HandlebarsTemplates['category/category'](@model.toJSON()))
@@ -17,9 +17,10 @@ Todolist.Views.Category = Backbone.View.extend
     @$el.find('.todo-list-container').append(todoCollectionView.el)
     @
 
-  deleteCategory: (e)->
+  markAsInactive: (e)->
     # Remove el from the DOM
     @$el.remove()
 
     # Delete the Category server-side
-    @model.destroy()
+    @model.save
+      active: false 

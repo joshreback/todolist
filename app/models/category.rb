@@ -14,4 +14,10 @@ class Category < ActiveRecord::Base
 
     query = query.where(completed: false) if opts[:incomplete_only]
   end
+
+  def mark_as_inactive
+    self.active = false
+    self.date_marked_inactive = DateTime.now
+    self.save!
+  end
 end
