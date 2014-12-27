@@ -10,7 +10,9 @@ Todolist.Views.Todos = Backbone.View.extend
   initialize: ->
     _.bindAll @, "render"
     @collection.on('sync', @render)
-    @collection.fetch()
+    @collection.fetch
+      data:
+        $.param(day_timestamp: Date.now())
 
   render: ->
     # PRACTICE, collection-view

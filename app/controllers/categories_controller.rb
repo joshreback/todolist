@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
   def todos
     category = Category.find params[:category_id]
     opts = {}
-    opts[:timestamp]        = params[:timestamp]
+    opts[:timestamp]        = params[:day_timestamp].to_i
     opts[:incomplete_only]  = params[:incomplete_only] if params[:incomplete_only]
 
     todos = category.todos_by_day opts
