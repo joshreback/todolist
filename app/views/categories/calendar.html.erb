@@ -1,4 +1,4 @@
-<h2 id="month">
+<h2 id="month" data-month=<%= @date.month %> data-year=<%= @date.year %>>
   <%= link_to "<", date: @date.prev_month %>
   <%= @date.strftime("%B %Y") %>
   <%= link_to ">", date: @date.next_month %>

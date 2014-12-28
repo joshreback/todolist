@@ -9,3 +9,14 @@ $ ->
     categoriesView = new Todolist.Views.Categories
       el:         $(".container")
       collection: categoriesCollection
+
+  if $("body#categories.calendar")
+    opts = {
+      month: $("#month").data("month"),
+      year: $("#month").data("year") 
+    }
+    
+    calendarModel = new Todolist.Models.Calendar(opts)
+    calendarView = new Todolist.Views.Calendar
+      el: $("#calendar")
+      model: calendarModel
