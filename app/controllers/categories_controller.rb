@@ -4,10 +4,11 @@ class CategoriesController < ApplicationController
 
   # Public: Lists all categories & associated todos of the current user
   def index
-    @categories = current_user.active_categories
+    @categories = current_user.active_categories params
 
     respond_to do |format|
       format.html { render action: 'index' }
+      format.json { render json: @categories, status: :ok }
     end
   end
 
@@ -56,6 +57,6 @@ class CategoriesController < ApplicationController
   private 
 
   def categories_params
-    params.require(:category).permit(:name, :id)
+    params.require(:category).permit(:name, :id, :day_timestamp)
   end
 end

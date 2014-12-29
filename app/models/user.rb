@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   def active_categories opts={}
     if opts[:day_timestamp]
       # If a date is specified, then we want all categories that were active on a certain day
-      desired_day = DateTime.parse(Time.at(opts[:timestamp]/1000).to_s).beginning_of_day + 1
+      desired_day = DateTime.parse(Time.at(opts[:day_timestamp].to_i/1000).to_s).beginning_of_day + 1
       query = categories.where('date_marked_inactive < :date_bound', { 
         date_bound: desired_day 
       })
