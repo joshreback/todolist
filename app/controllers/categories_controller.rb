@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
 
   # Public: Lists all categories & associated todos of the current user
   def index
-    binding.pry
     @categories = current_user.active_categories
 
     respond_to do |format|
