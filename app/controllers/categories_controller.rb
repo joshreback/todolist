@@ -3,6 +3,10 @@ class CategoriesController < ApplicationController
   wrap_parameters format: [:json]
 
   # Public: Lists all categories & associated todos of the current user
+  # Expecting:
+  #   Moonwalking with Einstein
+  #   Jack Kinsella Article
+  #   Quora Post about self-taught programmers
   def index
     @categories = current_user.active_categories params
 

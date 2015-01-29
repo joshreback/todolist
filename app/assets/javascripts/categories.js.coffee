@@ -12,7 +12,7 @@ $ ->
 
   if $("body#categories.calendar")
     opts = {
-      month: $("#month").data("month"),
+      month: $("#month").data("month") - 1,
       year: $("#month").data("year") 
     }
     
