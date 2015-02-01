@@ -46,11 +46,12 @@ class CategoriesController < ApplicationController
     opts[:timestamp]        = params[:day_timestamp].to_i
     opts[:incomplete_only]  = params[:incomplete_only] if params[:incomplete_only]
 
-    todos_for_day = category.todos_by_day opts  # Fetch todos for today
-    todos_for_today = Todo.create_todos_for_today todos, category.id if opts[:create_new_todos]
+    if opts[:create_new_todos]
+      todos = Todo.create_todos_for_today todos, category.id
+    end
     
     respond_to do |format|
-      format.json { render json: todos_for_today || todos_for_day, status: :ok }
+      format.json { render json: todos, status: :ok }
     end
   end
 

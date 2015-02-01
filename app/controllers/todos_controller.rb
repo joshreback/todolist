@@ -1,4 +1,4 @@
-class TodosController < ApplicationController
+ class TodosController < ApplicationController
   def create
     params = todos_params
 
