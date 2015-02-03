@@ -20,3 +20,5 @@ $ ->
     calendarView = new Todolist.Views.Calendar
       el: $("#calendar")
       model: calendarModel
+
+
