@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
   resources :users
   resources :sessions
   resources :categories do
@@ -25,7 +26,9 @@ Rails.application.routes.draw do
     resources :todos
   end
   get 'calendar', to: 'categories#calendar', as: 'calendar'
+  get 'snapshot', to: 'categories#snapshot', as: 'snapshot'
   resources :todos, only: [:index]
+  
   root 'users#new'
 
   # Example resource route with options:

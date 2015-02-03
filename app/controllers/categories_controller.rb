@@ -1,19 +1,9 @@
 class CategoriesController < ApplicationController
 
-  wrap_parameters format: [:json]
-
   # Public: Lists all categories & associated todos of the current user
-  # Expecting:
-  #   Moonwalking with Einstein
-  #   Jack Kinsella Article
-  #   Quora Post about self-taught programmers
   def index
-    @categories = current_user.active_categories params
-
-    respond_to do |format|
-      format.html { render action: 'index' }
-      format.json { render json: @categories, status: :ok }
-    end
+    @categories = current_user.active_categories
+    respond_to :html
   end
 
   # Public: Creates a new category for the current_user
@@ -55,8 +45,17 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # Renders the calendar page
   def calendar
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+
+  # Renders a "snapshot" of what a user accomplished on a certain day
+  def snapshot
+    @snapshot_of_day = current_user.snapshot params[:day_timestamp]
+
+    binding.pry
+    respond_to :html
   end
   
   private 
