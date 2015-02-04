@@ -9,19 +9,28 @@
       <hr />
 
       <div class="todo-list-container">
-        <div class="todo-list">
-          <% todos.each do |todo| %>
-            <% if todo.completed %>
-              <div class="completed-todo-container">
-                <input type='text' class='todo completed' value="<%=todo.name%>" disabled></input>
-              </div>
-              <hr />
-            <% else %>
-              <div class="saved-todo-container">
-                <input type='text' class='todo edit' value="<%=todo.name%>" disabled></input>
+        <div class="todos-container">
+          <div class="todo-list">
+
+            <% todos.each do |todo| %>
+              <div class="todo-container">
+
+                <% if todo.completed %>
+                  <div class="completed-todo-container" style="margin-left: 10px;">
+                    <input type='text' class='todo completed past-completed' value="<%=todo.name%>" disabled></input>
+                  </div>
+                  <hr />
+                <% else %>
+                  <div class="saved-todo-container">
+                    <input type='text' class='todo edit' value="<%=todo.name%>" disabled></input>
+                  </div>
+                  <hr />
+                <% end %>
+
               </div>
             <% end %>
-          <% end %>
+
+          </div>
         </div>
       </div>
     </div>
