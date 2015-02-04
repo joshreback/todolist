@@ -1,6 +1,29 @@
 <% @snapshot_of_day.each do |category, todos| %>
-  <div><%= category %></div>
-  <% todos.each do |todo| %>
-    <div><%= todo.name %></div>
-  <% end %>
+  <div class="col-md-4">
+    <div class="category-container">
+      <span class="category-name"> <strong><%= category %></strong></span>
+
+      <button type="button" class="delete-category pull-right btn btn-danger btn-xs">
+        <i class="glyphicon glyphicon-remove"></i>
+      </button>
+      <hr />
+
+      <div class="todo-list-container">
+        <div class="todo-list">
+          <% todos.each do |todo| %>
+            <% if todo.completed %>
+              <div class="completed-todo-container">
+                <input type='text' class='todo completed' value="<%=todo.name%>" disabled></input>
+              </div>
+              <hr />
+            <% else %>
+              <div class="saved-todo-container">
+                <input type='text' class='todo edit' value="<%=todo.name%>" disabled></input>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
