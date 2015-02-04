@@ -38,8 +38,10 @@ class CategoriesController < ApplicationController
 
     if opts[:create_new_todos]
       todos = Todo.create_todos_for_today todos, category.id
+    else
+      todos = category.todos_by_day opts  # Fetch todos for today
     end
-    
+
     respond_to do |format|
       format.json { render json: todos, status: :ok }
     end
