@@ -1,0 +1,6 @@
+<% @snapshot_of_day.each do |category, todos| %>
+  <div><%= category %></div>
+  <% todos.each do |todo| %>
+    <div><%= todo.name %></div>
+  <% end %>
+<% end %>

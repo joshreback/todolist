@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Todolist</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= params[:controller].parameterize %>" class="<%= params[:action].parameterize %>">
@@ -17,7 +17,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Calendar", calendar_path, class: "nav-text", style: "color: #FFCC00;" %></li>
+          <li><%= link_to "Calendar", calendar_path, class: "nav-text", style: "color: #FFCC00;", data: { no_turbolink: true } %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle nav-text" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #FFCC00;">My Account<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
