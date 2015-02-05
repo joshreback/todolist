@@ -54,7 +54,9 @@ class CategoriesController < ApplicationController
 
   # Renders a "snapshot" of what a user accomplished on a certain day
   def snapshot
-    @snapshot_of_day = current_user.snapshot params[:day_timestamp]
+    @timestamp        = params[:day_timestamp]
+    @snapshot_of_day  = current_user.snapshot @timestamp
+    
     respond_to :html
   end
   

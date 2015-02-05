@@ -1,3 +1,7 @@
+<div class="day-summary-header">
+This is what happened on <%= display_date @timestamp %>
+</div>
+
 <% @snapshot_of_day.each do |category, todos| %>
   <div class="col-md-4">
     <div class="category-container">
@@ -36,3 +40,4 @@
     </div>
   </div>
 <% end %>
+

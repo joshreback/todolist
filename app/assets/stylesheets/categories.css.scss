@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.day-summary-header {
+  font-size: 30px;
+  color: #7D0000;
+  margin: 30px auto;
+  width: 50%;
+}
+
 .hidden {
   display: none;
 }
