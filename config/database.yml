@@ -5,4 +5,18 @@ development:
   password:
   database: todolist_dev
   host: localhost
+test:
+  adapter: mysql
+  encoding: utf8
+  username: root
+  password:
+  database: todolist_test
+  host: localhost
+production:
+  adapter: mysql
+  encoding: utf8
+  username: root
+  password:
+  database: todolist_production
+  host: localhost
 
