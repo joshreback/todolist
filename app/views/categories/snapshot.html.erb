@@ -1,0 +1,44 @@
+<div class="day-summary-header">
+This is what happened on <%= display_date @timestamp %>
+</div>
+
+<% @snapshot_of_day.each do |category, todos| %>
+  <div class="col-md-4">
+    <div class="category-container">
+      <span class="category-name"> <strong><%= category %></strong></span>
+
+      <hr />
+
+      <div class="todo-list-container">
+        <div class="todos-container">
+          <div class="todo-list">
+            <% if todos.length == 0 %>
+              <div class="todo-container" style="font-weight: 300; margin-left: 10px; margin-bottom: 10px">
+              No Todos
+              </div>
+            <% end %>
+
+            <% todos.each do |todo| %>
+              <div class="todo-container">
+                <% if todo.completed %>
+                  <div class="completed-todo-container" style="margin-left: 10px;">
+                    <input type='text' class='todo completed past-completed' value="<%=todo.name%>" disabled></input>
+                  </div>
+                  <hr />
+                <% else %>
+                  <div class="saved-todo-container">
+                    <input type='text' class='todo edit' value="<%=todo.name%>" disabled></input>
+                  </div>
+                  <hr />
+                <% end %>
+
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

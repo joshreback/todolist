@@ -1,6 +1,7 @@
 Todolist.Views.Todos = Backbone.View.extend
 
-  className: 'category-todo-list'
+  className:
+    "todos-container"
 
   events:
     "click .new-todo":          "addTodo"
@@ -9,11 +10,13 @@ Todolist.Views.Todos = Backbone.View.extend
   initialize: ->
     _.bindAll @, "render"
     @collection.on('sync', @render)
-    @collection.fetch()
+    @collection.fetch
+      data:
+        $.param(day_timestamp: Date.now())
 
   render: ->
     # PRACTICE, collection-view
-    @$el.html(HandlebarsTemplates['category/todos']())
+    @$el.html(HandlebarsTemplates['category/todos']({notUsingYesterdays: @collection.fetchedYesterdays}))
     @collection.forEach (todo)=>
       todo.setUrl(@collection.category_id)
       @addOne(todo)
@@ -21,7 +24,7 @@ Todolist.Views.Todos = Backbone.View.extend
   addOne: (model) ->
     todoView = new Todolist.Views.Todo
       model: model
-    @$el.append(todoView.el)
+    @$el.find('.todo-list').append(todoView.el)
 
 ############################
 ###### Event Handlers ######
@@ -39,12 +42,21 @@ Todolist.Views.Todos = Backbone.View.extend
     @listenTo(todo, 'completeTodo', @completeTodo)
 
     # Add this Todo to the DOM
-    @$el.append(todo.el)
+    @$el.find('.todo-list').append(todo.el)
 
   fetchYesterdays: (e)->
+    e.preventDefault()
+
+    @collection.fetchedYesterdays = true
+
+    yesterdayTimeStamp = new Date() - 1000 * 60 * 60 * 24
+
     @collection.fetch
+      remove: false
       data: 
-        $.param(yesterday: true)
+        $.param
+          create_new_todos: true
+          day_timestamp: yesterdayTimeStamp
     
 
   saveTodo: (todoModel)->

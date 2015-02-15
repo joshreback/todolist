@@ -1,5 +1,4 @@
-class TodosController < ApplicationController
-
+ class TodosController < ApplicationController
   def create
     params = todos_params
 
@@ -13,7 +12,6 @@ class TodosController < ApplicationController
   end
 
   def update
-    binding.pry
     params = todos_params
     
     todo = Todo.find params[:id]

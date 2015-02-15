@@ -2,18 +2,23 @@ class Category < ActiveRecord::Base
   belongs_to :user
   has_many :todos, dependent: :destroy
 
-  def todays_todos
-    todos.where("updated_at > ?", DateTime.now.beginning_of_day )
+  def todos_by_day opts={}
+    desired_day = DateTime.parse(Time.at(opts[:timestamp]/1000).to_s).beginning_of_day
+    next_day = desired_day + 1
+
+    query = todos.where(
+      'updated_at > :earlier_bound AND updated_at <= :later_bound', { 
+        earlier_bound: desired_day, 
+        later_bound: next_day
+      })
+    
+    query = query.where(completed: false) if opts[:incomplete_only]
+    query
   end
 
-  def yesterdays_todos
-    todos.where(
-      'updated_at > :yesterday AND updated_at <= :today', 
-      { 
-        yesterday: DateTime.yesterday.beginning_of_day, 
-        today: DateTime.now.beginning_of_day
-      },
-      completed: false
-    )
+  def mark_as_inactive
+    self.active = false
+    self.date_marked_inactive = DateTime.now
+    self.save!
   end
 end

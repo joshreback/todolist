@@ -1,5 +1,13 @@
-<input type="checkbox" name='completed' class='complete-todo'>
-<input type='text' class='todo' value='{{name}}' disabled></input>
-<!-- Temporary - should be able to add TODOS by pressing enter -->
-<button type='button' class='edit-todo'>Edit</button>
-<button type='button' class='destroy-todo'>Destroy</button>
+<div class="saved-todo-container">
+  <button type="button" class='complete-todo btn-success btn-xs'>
+    <i class="glyphicon glyphicon-ok"></i>
+  </button>
+  <input type='text' class='todo edit' value='{{name}}' disabled></input>
+  <button type='button' class='edit-todo btn-warning btn-xs'>
+    <i class="glyphicon glyphicon-pencil"></i>
+  </button>
+  <button type='button' class='destroy-todo btn-danger btn-xs'>
+    <i class="glyphicon glyphicon-remove"></i>
+  </button>
+</div>
+<hr />

@@ -70,7 +70,6 @@ Todolist.Views.Todo = Backbone.View.extend
     @model.set
       completed: 1
     @model.updateUrl()
-    debugger;
     @model.save()
 
 
