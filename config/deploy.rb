@@ -2,7 +2,7 @@
 lock '3.1.0'
 
 set :application, 'todolist'
-set :repo_url, 'git@github.com:joshreback/todolist.git'
+set :repo_url, 'https://joshreback@github.com/todolist.git'
 set :ssh_options, { :forward_agent => true }
 
 # Default branch is :master
