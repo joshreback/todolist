@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/capistrano/rvm.git
+  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
+  specs:
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 67f160dd2ff5cc7cd843a17866c3b6bc8e7f2794
   specs:
@@ -53,6 +61,16 @@ GEM
       railties
     bcrypt (3.1.9)
     builder (3.2.2)
+    capistrano (3.1.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.2)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -61,7 +79,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.5)
     commonjs (0.2.7)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -98,6 +122,9 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     mysql (2.9.1)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -147,6 +174,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.6.1)
+      colorize (>= 0.7.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -168,7 +199,12 @@ PLATFORMS
 DEPENDENCIES
   backbone-on-rails
   bcrypt (~> 3.1.7)
+  capistrano (~> 3.1.0)
+  capistrano-bundler (~> 1.1.2)
+  capistrano-rails (~> 1.1.1)
+  capistrano-rvm!
   coffee-rails (~> 4.0.0)
+  dotenv-rails
   handlebars_assets
   jbuilder (~> 2.0)
   jquery-rails
