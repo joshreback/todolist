@@ -1,9 +1,9 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-set :ssh_options, { :forward_agent => true }
 set :application, 'todolist'
 set :repo_url, 'git@github.com:joshreback/todolist.git'
+set :ssh_options, { :forward_agent => true }
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
